@@ -1,14 +1,15 @@
 from sense_emu import SenseHat
 import time
 
+sense = SenseHat()
+
 def main():
-    sense = SenseHat()
     sense.show_message("Bootup")
     while 1:
         sense.show_message(getsensordata())
-        setImage(1)
+        setimage(1))
         time.sleep(5)
-        setImage(0)
+        setimage(0)
 
 
 def getsensordata():
@@ -17,7 +18,7 @@ def getsensordata():
     pressure = round(sense.get_pressure(), 1)
     return "Temp: {0}, Hum: {1}, Pressure: {2}".format(round(sense.get_temperature(), 1), round(sense.get_humidity(), 1), round(sense.get_pressure(), 1))
 
-def setImage(x):
+def setimage(x):
     r = [255, 0, 0]
     o = [255, 127, 0]
     y = [255, 255, 0]
