@@ -7,7 +7,7 @@ def main():
     sense.show_message("Bootup")
     while 1:
         sense.show_message(getsensordata())
-        setimage(1))
+        setimage(1)
         time.sleep(5)
         setimage(0)
 
