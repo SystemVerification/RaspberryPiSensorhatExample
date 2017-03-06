@@ -16,12 +16,12 @@ def getsensordata():
     savedata(round(sense.get_temperature(), 1), round(sense.get_humidity(), 1), round(sense.get_pressure(), 1))
     return "Temp: {0}, Hum: {1}, Pressure: {2}".format(round(sense.get_temperature(), 1), round(sense.get_humidity(), 1), round(sense.get_pressure(), 1))
 
-def savedata(x, e, z):
+def savedata(x, y, z):
     a = '/var/www/datafile.json'
     f = open(a, 'w')
-    f.write('Temp is %s /n' % x)
-    f.write('Humidity is %s /n' % y)
-    f.write('Pressure is %s' % z)
+    f.write([{"name":"TEMP","id":x},
+             {"name":"HUM","id":y},
+             {"name":"PRESS","id":z}])
     f.close()
 
 
