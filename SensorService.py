@@ -8,15 +8,22 @@ def main():
     while 1:
         sense.show_message(getsensordata())
         setimage(1)
-        time.sleep(5)
+        time.sleep(30)
         setimage(0)
 
 
 def getsensordata():
-    temp = round(sense.get_temperature(), 1)
-    hum = round(sense.get_humidity(), 1)
-    pressure = round(sense.get_pressure(), 1)
+    savedata(round(sense.get_temperature(), 1), round(sense.get_humidity(), 1), round(sense.get_pressure(), 1))
     return "Temp: {0}, Hum: {1}, Pressure: {2}".format(round(sense.get_temperature(), 1), round(sense.get_humidity(), 1), round(sense.get_pressure(), 1))
+
+def savedata(x, e, z):
+    a = '/var/www/datafile.json'
+    f = open(a, 'w')
+    f.write('Temp is %s /n' % x)
+    f.write('Humidity is %s /n' % y)
+    f.write('Pressure is %s' % z)
+    f.close()
+
 
 def setimage(x):
     r = [255, 0, 0]
@@ -30,13 +37,13 @@ def setimage(x):
 
     image = [
         e, e, e, e, e, e, e, e,
-        e, e, e, r, r, e, e, e,
-        e, r, r, o, o, r, r, e,
-        r, o, o, y, y, o, o, r,
-        o, y, y, g, g, y, y, o,
-        y, g, g, b, b, g, g, y,
-        b, b, b, i, i, b, b, b,
-        b, i, i, v, v, i, i, b
+        e, e, e, e, e, e, e, e,
+        e, e, e, e, e, e, e, e,
+        e, e, e, e, e, e, e, e,
+        e, e, e, e, e, e, e, e,
+        e, e, e, e, e, e, e, e,
+        e, e, e, e, e, e, e, e,
+        e, e, e, e, e, e, e, e
     ]
     if x is 1:
         sense.set_pixels(image)
